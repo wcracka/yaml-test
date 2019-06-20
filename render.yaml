@@ -1,0 +1,7 @@
+services:
+- name: jekyll
+  type: web
+  repo: https://github.com/render-examples/jekyll
+  env: static
+  buildCommand: bundle exec jekyll build
+  staticPublishPath: _site
