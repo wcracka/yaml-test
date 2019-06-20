@@ -1,0 +1,13 @@
+databases:
+- name: metabase_db
+
+services:
+- name: metabase
+  type: web
+  repo: https://github.com/render-examples/metabase
+  env: docker
+  envVars:
+  - key: MB_DB_CONNECTION_URI
+    fromDatabase:
+      name: metabase_db
+      property: connectionString
