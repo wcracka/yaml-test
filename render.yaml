@@ -1,0 +1,19 @@
+databases:
+- name: rails-db
+
+services:
+- name: rails
+  type: web
+  repo: https://github.com/render-examples/rails
+  env: ruby
+  buildCommand: ./build.sh
+  startCommand: "bundle exec puma -t 5:5 ${PORT:-3000} -e ${RACK_ENV:-development}"
+  envVars:
+  - key: SECRET_KEY_BASE
+    value: your-secret-here
+  - key: DB_URL
+    fromDatabase:
+      name: rails-db
+      property: connectionString
+  - key: RAILS_SERVE_STATIC_FILES
+    value: "true"
