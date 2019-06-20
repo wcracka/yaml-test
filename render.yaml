@@ -1,5 +1,6 @@
 databases:
 - name: laravel_db
+- name: metabase_db
 
 services:
 - name: laravel
@@ -22,3 +23,13 @@ services:
   env: static
   buildCommand: bundle exec jekyll build
   staticPublishPath: _site
+
+- name: metabase
+  type: web
+  repo: https://github.com/render-examples/metabase
+  env: docker
+  envVars:
+  - key: MB_DB_CONNECTION_URI
+    fromDatabase:
+      name: metabase_db
+      property: connectionString
