@@ -16,7 +16,7 @@ services:
       name: laravel_db
       property: connectionString
   - key: APP_KEY
-    value: some-secret-key-goes-here
+    generateValue: true
 
 - name: jekyll
   type: web
