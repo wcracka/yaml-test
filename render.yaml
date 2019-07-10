@@ -6,7 +6,10 @@ services:
   plan: standard
   envVars:
   - key: node.name
-    value: es01
+    fromService:
+      name: elasticsearch-1
+      type: web
+      property: host
   - key: discovery.seed_hosts
     fromService:
       name: elasticsearch-1
@@ -27,7 +30,10 @@ services:
   plan: standard
   envVars:
   - key: node.name
-    value: es02
+    fromService:
+      name: elasticsearch-2
+      type: web
+      property: host
   - key: discovery.seed_hosts
     fromService:
       name: elasticsearch-1
