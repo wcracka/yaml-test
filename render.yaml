@@ -1,0 +1,13 @@
+services:
+- name: elasticsearch
+  type: web
+  branch: es
+  env: docker
+  envVars:
+  - key: discovery.type
+    value: single-node
+  - key: ES_JAVA_OPTS
+    value: -Xms512m -Xmx512m
+  disk:
+    name: esdata
+    mountPath: /usr/share/elasticsearch/data
