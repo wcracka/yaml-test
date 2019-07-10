@@ -1,13 +1,43 @@
 services:
-- name: elasticsearch
+- name: elasticsearch-1
   type: web
-  branch: es
+  branch: es-cluster
   env: docker
+  plan: standard
   envVars:
-  - key: discovery.type
-    value: single-node
-  - key: ES_JAVA_OPTS
-    value: -Xms512m -Xmx512m
+  - key: node.name
+    value: es01
+  - key: discovery.seed_hosts
+    fromService:
+      name: elasticsearch-1
+      type: web
+      property: host
+  - key: cluster.initial_master_nodes
+    fromService:
+      name: elasticsearch-1
+      type: web
+      property: host
+  disk:
+    name: esdata
+    mountPath: /usr/share/elasticsearch/data
+- name: elasticsearch-2
+  type: web
+  branch: es-cluster
+  env: docker
+  plan: standard
+  envVars:
+  - key: node.name
+    value: es02
+  - key: discovery.seed_hosts
+    fromService:
+      name: elasticsearch-1
+      type: web
+      property: host
+  - key: cluster.initial_master_nodes
+    fromService:
+      name: elasticsearch-1
+      type: web
+      property: host
   disk:
     name: esdata
     mountPath: /usr/share/elasticsearch/data
