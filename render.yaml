@@ -1,7 +1,6 @@
 services:
 - name: elasticsearch
   type: web
-  branch: es
   env: docker
   envVars:
   - key: discovery.type
