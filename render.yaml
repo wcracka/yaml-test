@@ -1,7 +1,6 @@
 services:
 - name: elasticsearch-1
   type: web
-  branch: es-cluster
   env: docker
   plan: standard
   envVars:
