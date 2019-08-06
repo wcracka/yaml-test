@@ -1,0 +1,10 @@
+services:
+- type: web
+  name: grafana
+  env: docker
+  repo: https://github.com/grafana/grafana.git
+  plan: standard
+  branch: master
+  disk:
+    name: grafana-data
+    mountPath: /var/lib/grafana
