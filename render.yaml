@@ -3,3 +3,8 @@ services:
   env: docker
   name: rabbitmq
   repo: github.com/bitnami/bitnami-docker-rabbitmq
+  dockerfilePath: ./3.7/debian-9/Dockerfile
+  dockerContext: ./3.7/debian-9
+  disk:
+    name: rabbitmq_data
+    mountPath: /bitnami
