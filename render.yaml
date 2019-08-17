@@ -1,0 +1,5 @@
+services:
+- type: worker
+  env: docker
+  name: rabbitmq
+  repo: github.com/bitnami/bitnami-docker-rabbitmq
